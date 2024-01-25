@@ -1,26 +1,28 @@
 import { TProduct } from "./product.interface";
 import { Product } from "./product.model";
 
-const createProduct = (product: TProduct) => {
-  const result = Product.create(product);
+const createProduct = async (product: TProduct) => {
+  const result = await Product.create(product);
   return result;
 };
 
-const getAllProducts = () => {
-  const result = Product.find();
+const getAllProducts = async () => {
+  const result = await Product.find();
   return result;
 };
-const getSingleProduct = (id: string) => {
-  const result = Product.findById(id);
+const getSingleProduct = async (id: string) => {
+  const result = await Product.findById(id);
   return result;
 };
-const updateProduct = (id: string, product: TProduct) => {
-  const result = Product.findOneAndUpdate({ _id: id }, product, { new: true });
+const updateProduct = async (id: string, product: TProduct) => {
+  const result = await Product.findOneAndUpdate({ _id: id }, product, {
+    new: true,
+  });
   return result;
 };
 
-const deleteProduct = (id: string) => {
-  const result = Product.findByIdAndDelete(id);
+const deleteProduct = async (id: string) => {
+  const result = await Product.findByIdAndDelete(id);
   return result;
 };
 
